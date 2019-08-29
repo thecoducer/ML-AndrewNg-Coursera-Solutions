@@ -24,15 +24,7 @@ sigma = zeros(1, size(X, 2)); % 2 means column here
 %               each feature. 
 %
 % Hint: You might find the 'mean' and 'std' functions useful.
-%       
-
-% mu = mean(X);
-% sigma = std(X);
 % 
-% X_norm = X_norm .- mu;
-% X_norm = X_norm ./ sigma;
-% 
-% X = X_norm;
 
 mu = mean(X);
 sigma = std(X);
