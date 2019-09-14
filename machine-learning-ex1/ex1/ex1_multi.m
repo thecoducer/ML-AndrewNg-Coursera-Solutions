@@ -82,11 +82,11 @@ X = [ones(m, 1) X];
 fprintf('Running gradient descent ...\n');
 
 % Choose some alpha value
-alpha = 0.01;
+alpha = 0.3;
 num_iters = 400;
 
 % Init Theta and Run Gradient Descent 
-theta = zeros(3, 1);
+theta = zeros(3, 1); % zeros(R, C)
 [theta, J_history] = gradientDescentMulti(X, y, theta, alpha, num_iters);
 
 % Plot the convergence graph
@@ -100,11 +100,16 @@ fprintf('Theta computed from gradient descent: \n');
 fprintf(' %f \n', theta);
 fprintf('\n');
 
-% Estimate the price of a 1650 sq-ft, 3 br house
+% Estimate the price of a 1650 sq-ft, 3 bedroom house
 % ====================== YOUR CODE HERE ======================
 % Recall that the first column of X is all-ones. Thus, it does
 % not need to be normalized.
-price = 0; % You should change this
+% normalizing the input
+nX = [1650 3];
+nX = nX - mu;
+nX = nX ./ sigma;
+nX = [1 nX];
+price = nX * theta; % You should change this
 
 
 % ============================================================
@@ -139,6 +144,7 @@ m = length(y);
 X = [ones(m, 1) X];
 
 % Calculate the parameters from the normal equation
+
 theta = normalEqn(X, y);
 
 % Display normal equation's result
@@ -149,7 +155,8 @@ fprintf('\n');
 
 % Estimate the price of a 1650 sq-ft, 3 br house
 % ====================== YOUR CODE HERE ======================
-price = 0; % You should change this
+nX = [1 1650 3];
+price = nX * theta; % You should change this
 
 
 % ============================================================
