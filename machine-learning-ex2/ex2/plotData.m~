@@ -15,8 +15,7 @@ figure; hold on;
 % y is our actual output data
 
 % Find Indices of Positive and Negative Examples
-pos = find(y == 1); 
-neg = find(y == 0);
+pos = find(y==1); neg = find(y == 0);
 
 % find(y==1) finds y's whose value is 1 and returns a vector containing the
 % position. Same for find(y==0)
