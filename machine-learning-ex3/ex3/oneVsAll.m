@@ -50,12 +50,17 @@ X = [ones(m, 1) X];
 %
 
 
+options = optimset('GradObj', 'on', 'MaxIter', 50);
 
+for c=1:num_labels % traversing each K classes
 
+	initial_theta = zeros(n+1, 1);
 
+	[theta] = fmincg (@(t)(lrCostFunction(t, X, (y == c), lambda)), initial_theta, options);
 
+	all_theta(c,:) = theta';
 
-
+end
 
 
 

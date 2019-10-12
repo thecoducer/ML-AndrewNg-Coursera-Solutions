@@ -37,11 +37,17 @@ grad = zeros(size(theta));
 %
 
 
+h = sigmoid(X * theta); %h is a scalar value
+term_1 = -(y' * log(h));
+term_2 = (1 - y)' * log(1-h);
 
+theta(1) = 0;
 
+regCost = (lambda/(2*m)) * (theta' * theta);
+J = 1/m * sum(term_1 - term_2) + regCost;
 
-
-
+regGrad = (lambda/m) * theta;
+grad = 1/m * (X' * (h - y)) + regGrad;
 
 
 

@@ -51,17 +51,18 @@ pause;
 
 %% ============ Part 2: Compute Cost and Gradient ============
 %  In this part of the exercise, you will implement the cost and gradient
-%  for logistic regression. You neeed to complete the code in 
+%  for logistic regression. You need to complete the code in 
 %  costFunction.m
 
 %  Setup the data matrix appropriately, and add ones for the intercept term
-[m, n] = size(X);
+[m, n] = size(X); % here m=100 and n=2
 
 % Add intercept term to x and X_test
-X = [ones(m, 1) X];
+X = [ones(m, 1) X]; % now size(X) shows 100 3
 
 % Initialize fitting parameters
-initial_theta = zeros(n + 1, 1);
+initial_theta = zeros(n + 1, 1); %1 is added for theta0
+%dimension of initial_theta is 3 * 1
 
 % Compute and display initial cost and gradient
 [cost, grad] = costFunction(initial_theta, X, y);
@@ -136,7 +137,7 @@ pause;
 %  Predict probability for a student with score 45 on exam 1 
 %  and score 85 on exam 2 
 
-prob = sigmoid([1 45 85] * theta);
+prob = sigmoid([1 45 85] * theta); % here 1 is for x0
 fprintf(['For a student with scores 45 and 85, we predict an admission ' ...
          'probability of %f\n'], prob);
 fprintf('Expected value: 0.775 +/- 0.002\n\n');

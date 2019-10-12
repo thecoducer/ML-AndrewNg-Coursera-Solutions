@@ -21,13 +21,16 @@ grad = zeros(size(theta));
 %
 
 
+h = sigmoid(X * theta); 
+%dimension of X is 100 * 3
+%dimension of theta is 3 * 1
 
-h = sigmoid(X * theta);
 term_1 = -(y' * log(h));
 term_2 = (1 - y)' * log(1 - h);
+
 J = 1/m * sum(term_1 - term_2);
 
-grad = 1/m * (X' * (h - y));
+grad = 1/m * (X' * (h - y)); %the partial derivative part
 
 
 
