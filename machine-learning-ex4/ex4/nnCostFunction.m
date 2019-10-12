@@ -68,6 +68,7 @@ a2 = sigmoid(a1*Theta1');
 a2 = [ones(m,1) a2];	
 a3 = sigmoid(a2*Theta2');
 y = repmat([1:num_labels], m, 1) == repmat(y, 1, num_labels);
+% y output matrix for NN
 J = (-1 / m) * sum(sum(y.*log(a3) + (1 - y).*log(1 - a3)));
 
 regTheta1 =  Theta1(:,2:end);
