@@ -17,7 +17,8 @@ sim = 0;
 %
 
 
-
+denominator = 2 * (sigma ^ 2);
+sim = exp(-sum((x1 - x2) .^ 2)/denominator);
 
 
 

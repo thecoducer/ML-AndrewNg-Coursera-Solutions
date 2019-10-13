@@ -24,7 +24,33 @@ sigma = 0.3;
 %
 
 
+choice = [0.01 0.03 0.1 0.3 1 3 10 30]';
+minError = Inf;
+curC = Inf;
+cur_sigma = Inf;
 
+% trying out each of the eight values
+for i = 1:8
+	for j = 1:8
+		model = svmTrain(X, y, choice(i), @(x1, x2) gaussianKernel(x1, x2, choice(j)));
+		predictions = svmPredict(model,Xval);
+		error = mean(double(predictions ~= yval));
+		if error < minError
+			minError = error;
+			curC = choice(i);
+			cur_sigma = choice(j);
+		end
+	end
+end		
+
+C = curC;
+sigma = cur_sigma;
+
+
+steps = [ 0.01 0.03 0.1 0.3 1 3 10 30 ];
+minError = Inf;
+minC = Inf;
+minSigma = Inf;
 
 
 

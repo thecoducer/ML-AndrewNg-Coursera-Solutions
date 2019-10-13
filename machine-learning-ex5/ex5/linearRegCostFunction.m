@@ -20,13 +20,17 @@ grad = zeros(size(theta));
 %
 
 
+h = X * theta;
 
+SqrError = (h - y) .^ 2;
 
+theta(1) = 0;
 
+regCost = (lambda/(2*m)) * (theta' * theta);
 
+J = (1/(2*m)) * (sum(SqrError)) + regCost;
 
-
-
+grad = (1/m) * (X' * (h - y)) + (lambda/m) * theta;
 
 
 

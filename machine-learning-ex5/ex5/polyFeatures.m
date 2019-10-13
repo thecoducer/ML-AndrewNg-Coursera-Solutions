@@ -16,9 +16,11 @@ X_poly = zeros(numel(X), p);
 % 
 
 
-
-
-
+p_vec = zeros(1,p);
+for i = 1:p
+  p_vec(i) = i;
+end
+X_poly = bsxfun(@power, X, p_vec);
 
 % =========================================================================
 
